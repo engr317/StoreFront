@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BalloonsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccessDesc" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Balloons">
+          <Key>
+            <PropertyRef Name="BalloonID" />
+          </Key>
+          <Property Name="BalloonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNo" Type="char" MaxLength="14" />
+          <Property Name="BalloonTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" />
+          <Property Name="UnitsSold" Type="int" />
+          <Property Name="ProdDate" Type="date" />
+          <Property Name="DistributorsID" Type="int" Nullable="false" />
+          <Property Name="BalloonImg" Type="varchar" MaxLength="100" />
+          <Property Name="IsCategoryFeature" Type="bit" Nullable="false" />
+          <Property Name="BalloonStatusID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="Size" Type="nchar" MaxLength="10" />
+          <Property Name="Color" Type="nchar" MaxLength="10" />
+          <Property Name="ManufactID" Type="int" Nullable="false" />
+          <Property Name="AccessID" Type="int" />
+        </EntityType>
+        <EntityType Name="BalloonStatus">
+          <Key>
+            <PropertyRef Name="BalloonStatusID" />
+          </Key>
+          <Property Name="BalloonStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BalloonStatusName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Billing Information">
+          <Key>
+            <PropertyRef Name="BillingID" />
+          </Key>
+          <Property Name="BillingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="FirstName" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="LastName" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Company" Type="nchar" MaxLength="10" />
+          <Property Name="Address 1" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address 2" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="City" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="Zip" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distributors">
+          <Key>
+            <PropertyRef Name="DIstributorsID" />
+          </Key>
+          <Property Name="DIstributorsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DIstributorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CIty" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Title" Type="char" MaxLength="20" />
+          <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="DeptID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufactID" />
+          </Key>
+          <Property Name="ManufactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="char" MaxLength="50" />
+          <Property Name="City" Type="char" MaxLength="50" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="nchar" MaxLength="10" />
+          <Property Name="Country" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PayID" />
+          </Key>
+          <Property Name="PayID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="isCash" Type="bit" Nullable="false" />
+          <Property Name="isCheck" Type="bit" Nullable="false" />
+          <Property Name="isCard" Type="bit" Nullable="false" />
+          <Property Name="CheckNbr" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="CardNbr" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seasonal">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeasonName" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="ShipID" />
+          </Key>
+          <Property Name="ShipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipVIA" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="FIrstName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Company" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address 1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address 2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Country" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Residential" Type="bit" Nullable="false" />
+          <Property Name="Commercial" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="BalloonID" Type="int" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="30" />
+          <Property Name="StateAbbr" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsMylar" Type="bit" Nullable="false" />
+          <Property Name="IsLatex" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Balloons_Accessories">
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="AccessID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="AccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_BalloonStatus">
+          <End Role="BalloonStatus" Type="Self.BalloonStatus" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BalloonStatus">
+              <PropertyRef Name="BalloonStatusID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="BalloonStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Distributors1">
+          <End Role="Distributors" Type="Self.Distributors" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributors">
+              <PropertyRef Name="DIstributorsID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="DistributorsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Genres">
+          <End Role="Seasonal" Type="Self.Seasonal" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasonal">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufactID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="ManufactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Billing Information_States">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Billing Information" Type="Self.Billing Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Billing Information">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributors_States">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Distributors" Type="Self.Distributors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Distributors">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees1" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturers_States">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Manufacturers">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shippers_States">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipping_Balloons">
+          <End Role="Balloons" Type="Self.Balloons" Multiplicity="0..1" />
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Balloons">
+              <PropertyRef Name="BalloonID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="BalloonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BalloonsModelStoreContainer">
+          <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Balloons" EntityType="Self.Balloons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BalloonStatus" EntityType="Self.BalloonStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Billing Information" EntityType="Self.Billing Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distributors" EntityType="Self.Distributors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seasonal" EntityType="Self.Seasonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Balloons_Accessories" Association="Self.FK_Balloons_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_BalloonStatus" Association="Self.FK_Balloons_BalloonStatus">
+            <End Role="BalloonStatus" EntitySet="BalloonStatus" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Distributors1" Association="Self.FK_Balloons_Distributors1">
+            <End Role="Distributors" EntitySet="Distributors" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Genres" Association="Self.FK_Balloons_Genres">
+            <End Role="Seasonal" EntitySet="Seasonal" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Manufacturers" Association="Self.FK_Balloons_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Type" Association="Self.FK_Balloons_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Billing Information_States" Association="Self.FK_Billing Information_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Billing Information" EntitySet="Billing Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributors_States" Association="Self.FK_Distributors_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Distributors" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturers_States" Association="Self.FK_Manufacturers_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shippers_States" Association="Self.FK_Shippers_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipping_Balloons" Association="Self.FK_Shipping_Balloons">
+            <End Role="Balloons" EntitySet="Balloons" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BalloonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accessory">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Accessories" FromRole="Accessories" ToRole="Balloons" />
+        </EntityType>
+        <EntityType Name="Balloon">
+          <Key>
+            <PropertyRef Name="BalloonID" />
+          </Key>
+          <Property Name="BalloonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNo" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="BalloonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitsSold" Type="Int32" />
+          <Property Name="ProdDate" Type="DateTime" Precision="0" />
+          <Property Name="DistributorsID" Type="Int32" Nullable="false" />
+          <Property Name="BalloonImg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsCategoryFeature" Type="Boolean" Nullable="false" />
+          <Property Name="BalloonStatusID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ManufactID" Type="Int32" Nullable="false" />
+          <Property Name="AccessID" Type="Int32" />
+          <NavigationProperty Name="Accessory" Relationship="Self.FK_Balloons_Accessories" FromRole="Balloons" ToRole="Accessories" />
+          <NavigationProperty Name="BalloonStatu" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="Balloons" ToRole="BalloonStatus" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_Balloons_Distributors1" FromRole="Balloons" ToRole="Distributors" />
+          <NavigationProperty Name="Seasonal" Relationship="Self.FK_Balloons_Genres" FromRole="Balloons" ToRole="Seasonal" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Balloons_Manufacturers" FromRole="Balloons" ToRole="Manufacturers" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Balloons_Type" FromRole="Balloons" ToRole="Type" />
+          <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipping_Balloons" FromRole="Balloons" ToRole="Shippers" />
+        </EntityType>
+        <EntityType Name="BalloonStatu">
+          <Key>
+            <PropertyRef Name="BalloonStatusID" />
+          </Key>
+          <Property Name="BalloonStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BalloonStatusName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="BalloonStatus" ToRole="Balloons" />
+        </EntityType>
+        <EntityType Name="Billing_Information">
+          <Key>
+            <PropertyRef Name="BillingID" />
+          </Key>
+          <Property Name="BillingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Address_1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Address_2" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Billing_Information_States" FromRole="Billing_Information" ToRole="States" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department1" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="DIstributorsID" />
+          </Key>
+          <Property Name="DIstributorsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIstributorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Distributors1" FromRole="Distributors" ToRole="Balloons" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Distributors_States" FromRole="Distributors" ToRole="States" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="DeptID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
+          <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ManufactID" />
+          </Key>
+          <Property Name="ManufactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Manufacturers" FromRole="Manufacturers" ToRole="Balloons" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Manufacturers_States" FromRole="Manufacturers" ToRole="States" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PayID" />
+          </Key>
+          <Property Name="PayID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="isCash" Type="Boolean" Nullable="false" />
+          <Property Name="isCheck" Type="Boolean" Nullable="false" />
+          <Property Name="isCard" Type="Boolean" Nullable="false" />
+          <Property Name="CheckNbr" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CardNbr" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seasonal">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeasonName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Genres" FromRole="Seasonal" ToRole="Balloons" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="ShipID" />
+          </Key>
+          <Property Name="ShipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipVIA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FIrstName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Address_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Residential" Type="Boolean" Nullable="false" />
+          <Property Name="Commercial" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BalloonID" Type="Int32" />
+          <NavigationProperty Name="Balloon" Relationship="Self.FK_Shipping_Balloons" FromRole="Shippers" ToRole="Balloons" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Shippers_States" FromRole="Shippers" ToRole="States" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="StateAbbr" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Billing_Information" Relationship="Self.FK_Billing_Information_States" FromRole="States" ToRole="Billing_Information" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributors_States" FromRole="States" ToRole="Distributors" />
+          <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Manufacturers_States" FromRole="States" ToRole="Manufacturers" />
+          <NavigationProperty Name="Shippers" Relationship="Self.FK_Shippers_States" FromRole="States" ToRole="Shippers" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsMylar" Type="Boolean" Nullable="false" />
+          <Property Name="IsLatex" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Type" FromRole="Type" ToRole="Balloons" />
+        </EntityType>
+        <Association Name="FK_Balloons_Accessories">
+          <End Role="Accessories" Type="Self.Accessory" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="AccessID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="AccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_BalloonStatus">
+          <End Role="BalloonStatus" Type="Self.BalloonStatu" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BalloonStatus">
+              <PropertyRef Name="BalloonStatusID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="BalloonStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Distributors1">
+          <End Role="Distributors" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributors">
+              <PropertyRef Name="DIstributorsID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="DistributorsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Genres">
+          <End Role="Seasonal" Type="Self.Seasonal" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasonal">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufactID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="ManufactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipping_Balloons">
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="0..1" />
+          <End Role="Shippers" Type="Self.Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Balloons">
+              <PropertyRef Name="BalloonID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="BalloonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Billing_Information_States">
+          <End Role="States" Type="Self.State" Multiplicity="1" />
+          <End Role="Billing_Information" Type="Self.Billing_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Billing_Information">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Departments">
+          <End Role="Departments" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributors_States">
+          <End Role="States" Type="Self.State" Multiplicity="1" />
+          <End Role="Distributors" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Distributors">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Employees">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employees1" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturers_States">
+          <End Role="States" Type="Self.State" Multiplicity="1" />
+          <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Manufacturers">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shippers_States">
+          <End Role="States" Type="Self.State" Multiplicity="1" />
+          <End Role="Shippers" Type="Self.Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Shippers">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BalloonsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessories" EntityType="Self.Accessory" />
+          <EntitySet Name="Balloons" EntityType="Self.Balloon" />
+          <EntitySet Name="BalloonStatus" EntityType="Self.BalloonStatu" />
+          <EntitySet Name="Billing_Information" EntityType="Self.Billing_Information" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Distributors" EntityType="Self.Distributor" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Seasonals" EntityType="Self.Seasonal" />
+          <EntitySet Name="Shippers" EntityType="Self.Shipper" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <AssociationSet Name="FK_Balloons_Accessories" Association="Self.FK_Balloons_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_BalloonStatus" Association="Self.FK_Balloons_BalloonStatus">
+            <End Role="BalloonStatus" EntitySet="BalloonStatus" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Distributors1" Association="Self.FK_Balloons_Distributors1">
+            <End Role="Distributors" EntitySet="Distributors" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Genres" Association="Self.FK_Balloons_Genres">
+            <End Role="Seasonal" EntitySet="Seasonals" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Manufacturers" Association="Self.FK_Balloons_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Type" Association="Self.FK_Balloons_Type">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipping_Balloons" Association="Self.FK_Shipping_Balloons">
+            <End Role="Balloons" EntitySet="Balloons" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Billing_Information_States" Association="Self.FK_Billing_Information_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Billing_Information" EntitySet="Billing_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributors_States" Association="Self.FK_Distributors_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Distributors" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturers_States" Association="Self.FK_Manufacturers_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shippers_States" Association="Self.FK_Shippers_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Shippers" EntitySet="Shippers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BalloonsModelStoreContainer" CdmEntityContainer="BalloonsEntities">
+          <EntitySetMapping Name="Accessories">
+            <EntityTypeMapping TypeName="BalloonsModel.Accessory">
+              <MappingFragment StoreEntitySet="Accessories">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="AccessName" ColumnName="AccessName" />
+                <ScalarProperty Name="AccessDesc" ColumnName="AccessDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Balloons">
+            <EntityTypeMapping TypeName="BalloonsModel.Balloon">
+              <MappingFragment StoreEntitySet="Balloons">
+                <ScalarProperty Name="BalloonID" ColumnName="BalloonID" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="BalloonTitle" ColumnName="BalloonTitle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="UnitsSold" ColumnName="UnitsSold" />
+                <ScalarProperty Name="ProdDate" ColumnName="ProdDate" />
+                <ScalarProperty Name="DistributorsID" ColumnName="DistributorsID" />
+                <ScalarProperty Name="BalloonImg" ColumnName="BalloonImg" />
+                <ScalarProperty Name="IsCategoryFeature" ColumnName="IsCategoryFeature" />
+                <ScalarProperty Name="BalloonStatusID" ColumnName="BalloonStatusID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ManufactID" ColumnName="ManufactID" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BalloonStatus">
+            <EntityTypeMapping TypeName="BalloonsModel.BalloonStatu">
+              <MappingFragment StoreEntitySet="BalloonStatus">
+                <ScalarProperty Name="BalloonStatusID" ColumnName="BalloonStatusID" />
+                <ScalarProperty Name="BalloonStatusName" ColumnName="BalloonStatusName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Billing_Information">
+            <EntityTypeMapping TypeName="BalloonsModel.Billing_Information">
+              <MappingFragment StoreEntitySet="Billing Information">
+                <ScalarProperty Name="BillingID" ColumnName="BillingID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_1" ColumnName="Address 1" />
+                <ScalarProperty Name="Address_2" ColumnName="Address 2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="BalloonsModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="Department1" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributors">
+            <EntityTypeMapping TypeName="BalloonsModel.Distributor">
+              <MappingFragment StoreEntitySet="Distributors">
+                <ScalarProperty Name="DIstributorsID" ColumnName="DIstributorsID" />
+                <ScalarProperty Name="DIstributorName" ColumnName="DIstributorName" />
+                <ScalarProperty Name="CIty" ColumnName="CIty" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BalloonsModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="BalloonsModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="ManufactID" ColumnName="ManufactID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="BalloonsModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PayID" ColumnName="PayID" />
+                <ScalarProperty Name="isCash" ColumnName="isCash" />
+                <ScalarProperty Name="isCheck" ColumnName="isCheck" />
+                <ScalarProperty Name="isCard" ColumnName="isCard" />
+                <ScalarProperty Name="CheckNbr" ColumnName="CheckNbr" />
+                <ScalarProperty Name="CardNbr" ColumnName="CardNbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seasonals">
+            <EntityTypeMapping TypeName="BalloonsModel.Seasonal">
+              <MappingFragment StoreEntitySet="Seasonal">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="SeasonName" ColumnName="SeasonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="BalloonsModel.Shipper">
+              <MappingFragment StoreEntitySet="Shippers">
+                <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+                <ScalarProperty Name="ShipVIA" ColumnName="ShipVIA" />
+                <ScalarProperty Name="FIrstName" ColumnName="FIrstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_1" ColumnName="Address 1" />
+                <ScalarProperty Name="Address_2" ColumnName="Address 2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Residential" ColumnName="Residential" />
+                <ScalarProperty Name="Commercial" ColumnName="Commercial" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="BalloonID" ColumnName="BalloonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="BalloonsModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateAbbr" ColumnName="StateAbbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="BalloonsModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="IsMylar" ColumnName="IsMylar" />
+                <ScalarProperty Name="IsLatex" ColumnName="IsLatex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
