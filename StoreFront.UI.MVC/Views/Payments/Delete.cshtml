@@ -1,0 +1,64 @@
+﻿@model StoreFront.DATA.EF.Payment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.isCash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isCheck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCheck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNbr)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

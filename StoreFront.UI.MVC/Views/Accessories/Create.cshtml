@@ -1,48 +1,62 @@
 ﻿@model StoreFront.DATA.EF.Accessory
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add New Accessory";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Accessories", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Accessory</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccessName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AccessName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AccessName, "", new { @class = "text-danger" })
-            </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div id="aContainer">
+        <div id="aHeader">
+
+
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccessDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AccessDesc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AccessDesc, "", new { @class = "text-danger" })
-            </div>
+        <div id="aLeft">
+            @Html.LabelFor(model => model.AccessName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.AccessName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AccessName, "", new { @class = "text-danger" })
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div id="aRight">
+            @Html.LabelFor(model => model.AccessDesc, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.AccessDesc, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AccessDesc, "", new { @class = "text-danger" })
         </div>
-    </div>
-}
+        <div class="clearfix"></div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div id="bFooterLeft">
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+        <div id="bFooterRight">
+            <input type="submit" value="Add Accessory" class="btn btn-primary" />
+        </div>
+        <div class="clearfix"></div>
+    </div>//closes container
+}@*closes scope*@
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

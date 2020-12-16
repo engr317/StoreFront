@@ -1,0 +1,123 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Balloon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalloonTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsSold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalloonImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCategoryFeature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accessory.AccessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalloonStatu.BalloonStatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distributor.DIstributorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seasonal.SeasonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type.TypeID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalloonTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsSold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalloonImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCategoryFeature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accessory.AccessName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalloonStatu.BalloonStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distributor.DIstributorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seasonal.SeasonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.TypeID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BalloonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BalloonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BalloonID })
+        </td>
+    </tr>
+}
+
+</table>

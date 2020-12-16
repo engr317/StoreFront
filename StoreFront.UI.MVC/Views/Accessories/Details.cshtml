@@ -6,29 +6,50 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Accessory</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessName)
-        </dt>
+<div id="aContainer">
+    <div id="aHeader">
+        @Html.DisplayFor(model => model.AccessName)
+    </div>
+    <div id="aLeft">
+        <p>
+            <img src="~/Content/assets/images/Accessories/@Model.AccessImage" alt="@Model.AccessName" />
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.AccessName)
+            </strong>
+        </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.AccessName)
-        </dd>
+    </div>
+    <div id="aRight">
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.AccessDesc)
+                @Html.DisplayFor(model => model.AccessDesc)
+            </strong>
+        </p>
+    </div>
+    <div class="clearfix"></div>
+    <div id="bFooterLeft">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.AccessID })
+        }
+    </div>
+    <div id="bFooterRight">
+        @Html.ActionLink("Back to Books", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessDesc)
-        </dt>
+    <div class="clearfix"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AccessDesc)
-        </dd>
 
-    </dl>
+
+
+
+
+
+
+
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AccessID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

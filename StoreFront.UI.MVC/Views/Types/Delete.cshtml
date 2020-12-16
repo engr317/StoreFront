@@ -1,30 +1,30 @@
-﻿@model StoreFront.DATA.EF.Accessory
+﻿@model StoreFront.DATA.EF.Type
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Accessory</h4>
+    <h4>Type</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AccessName)
+            @Html.DisplayNameFor(model => model.IsMylar)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AccessName)
+            @Html.DisplayFor(model => model.IsMylar)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AccessDesc)
+            @Html.DisplayNameFor(model => model.IsLatex)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AccessDesc)
+            @Html.DisplayFor(model => model.IsLatex)
         </dd>
 
     </dl>

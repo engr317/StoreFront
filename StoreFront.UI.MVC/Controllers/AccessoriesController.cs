@@ -46,10 +46,48 @@ namespace StoreFront.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccessID,AccessName,AccessDesc")] Accessory accessory)
+        public ActionResult Create([Bind(Include = "AccessID,AccessName,AccessDesc")] Accessory accessory, HttpPostedFileBase AccessImage)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+
+                string imageName = "noImage.png";
+                //Check if the file uploaded is not null
+                if (AccessImage != null)
+                {
+                    //Get the file name and save it to a variable
+                    imageName = AccessImage.FileName;
+
+                    //use the file name we got and retreive only the extension and save it to a variable
+                    string ext = imageName.Substring(imageName.LastIndexOf("."));
+
+                    //create a collection of valid extensions 
+                    string[] goodExts = new string[] { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    //Compare our ext to the list
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        //rename the file
+                        //You could use other logic to create unique file names in this case you might
+                        //use the bookTitle plust the date to create a unique name.
+                        imageName = Guid.NewGuid() + ext;
+
+                        //send the file to the webserver and save it
+                        AccessImage.SaveAs(Server.MapPath("~/Content/assets/images/Accessories/" + imageName));
+
+                    }
+                    else //not a valid extension
+                    {
+                        //assign the value back to default
+                        imageName = "noImage.png";
+                    }
+                }
+                //No matter whether or not the file is legit, we are goin to update the database with the current value of the filename
+                //Accessory.AccessImage = imageName;
+
+
+                #endregion
                 db.Accessories.Add(accessory);
                 db.SaveChanges();
                 return RedirectToAction("Index");

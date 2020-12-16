@@ -1,0 +1,58 @@
+﻿@model StoreFront.DATA.EF.Payment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.isCash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isCheck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCheck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNbr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PayID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
