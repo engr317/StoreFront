@@ -143,21 +143,34 @@ namespace StoreFront.UI.MVC.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous]//this means anyone can register, but we want to make sure any newly registered 
+        //users also get assigned the appropriate roles.
         [ValidateAntiForgeryToken]
+        //Here is the model variable containing all the data(from their form submission)
+        //Allows the application to process other requests while it waits for the action to complete.
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
+                //The user variable below is the new user we are trying to create.  THis new user has 
+                //all the properties passed in from the register form submission.
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                //Below the CreateAsync() method adds the user object as a record in the database in the AspNetUers
+                //table.  CreateAsync() method is Asyncronous, the 'await' keyword makes sure the method 
+                //finishes processing before moving on.
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
+
+                    //Use the UserManager object to assign anonymous registration not the user role by
+
+                    UserManager.AddToRole(user.Id, "User");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
