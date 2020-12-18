@@ -31,7 +31,7 @@
                 <!-- Header -->
                 <header id="header">
                     <div class="logo">
-                        <a href="@Url.Action("Index", "Home")">Balloons</a>
+                        <a href="@Url.Action("Index", "Home")">Happy Time Balloons</a>
                     </div>
                 </header>
                 <div id="mainContent">
@@ -46,14 +46,15 @@
                 <nav id="menu">
                     <ul>
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Balloons")">Balloons</a></li>
                         <li><a href="@Url.Action("Index", "Accessories")">Accessories</a></li>
                         @*<li>
-                            <span class="opener"><a href="@Url.Action("Index", "Home")">MenuChoice</a></span>
-                            <ul>
-                                <li><a href="#">First Sub Menu</a></li>
-                                <li><a href="#">Second Sub Menu</a></li>
-                            </ul>
-                        </li>*@
+            <span class="opener"><a href="@Url.Action("Index", "Home")">MenuChoice</a></span>
+            <ul>
+                <li><a href="#">First Sub Menu</a></li>
+                <li><a href="#">Second Sub Menu</a></li>
+            </ul>
+        </li>*@
                         @*<li><a href="@Url.Action("Index", "Home")">MenuChoice</a></li>*@
 
                         @if (User.IsInRole("Admin") && Request.IsAuthenticated)

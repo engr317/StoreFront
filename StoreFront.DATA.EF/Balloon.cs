@@ -43,8 +43,8 @@ namespace StoreFront.DATA.EF
         public virtual Distributor Distributor { get; set; }
         public virtual Seasonal Seasonal { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Type Type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipper> Shippers { get; set; }
+        public virtual BalloonType BalloonType { get; set; }
     }
 }

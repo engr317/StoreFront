@@ -17,7 +17,7 @@ namespace StoreFront.UI.MVC.Controllers
         // GET: Balloons
         public ActionResult Index()
         {
-            var balloons = db.Balloons.Include(b => b.Accessory).Include(b => b.BalloonStatu).Include(b => b.Distributor).Include(b => b.Seasonal).Include(b => b.Manufacturer).Include(b => b.Type);
+            var balloons = db.Balloons.Include(b => b.Accessory).Include(b => b.BalloonStatu).Include(b => b.Distributor).Include(b => b.Seasonal).Include(b => b.Manufacturer).Include(b => b.BalloonType);
             return View(balloons.ToList());
         }
 
@@ -44,7 +44,7 @@ namespace StoreFront.UI.MVC.Controllers
             ViewBag.DistributorsID = new SelectList(db.Distributors, "DIstributorsID", "DIstributorName");
             ViewBag.GenreID = new SelectList(db.Seasonals, "GenreID", "SeasonName");
             ViewBag.ManufactID = new SelectList(db.Manufacturers, "ManufactID", "CompanyName");
-            ViewBag.TypeID = new SelectList(db.Types, "TypeID", "TypeID");
+            ViewBag.TypeID = new SelectList(db.BalloonTypes, "TypeID", "TypeID");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace StoreFront.UI.MVC.Controllers
             ViewBag.DistributorsID = new SelectList(db.Distributors, "DIstributorsID", "DIstributorName", balloon.DistributorsID);
             ViewBag.GenreID = new SelectList(db.Seasonals, "GenreID", "SeasonName", balloon.GenreID);
             ViewBag.ManufactID = new SelectList(db.Manufacturers, "ManufactID", "CompanyName", balloon.ManufactID);
-            ViewBag.TypeID = new SelectList(db.Types, "TypeID", "TypeID", balloon.TypeID);
+            ViewBag.TypeID = new SelectList(db.BalloonTypes, "TypeID", "TypeID", balloon.TypeID);
             return View(balloon);
         }
 
@@ -88,7 +88,7 @@ namespace StoreFront.UI.MVC.Controllers
             ViewBag.DistributorsID = new SelectList(db.Distributors, "DIstributorsID", "DIstributorName", balloon.DistributorsID);
             ViewBag.GenreID = new SelectList(db.Seasonals, "GenreID", "SeasonName", balloon.GenreID);
             ViewBag.ManufactID = new SelectList(db.Manufacturers, "ManufactID", "CompanyName", balloon.ManufactID);
-            ViewBag.TypeID = new SelectList(db.Types, "TypeID", "TypeID", balloon.TypeID);
+            ViewBag.TypeID = new SelectList(db.BalloonTypes, "TypeID", "TypeID", balloon.TypeID);
             return View(balloon);
         }
 
@@ -110,7 +110,7 @@ namespace StoreFront.UI.MVC.Controllers
             ViewBag.DistributorsID = new SelectList(db.Distributors, "DIstributorsID", "DIstributorName", balloon.DistributorsID);
             ViewBag.GenreID = new SelectList(db.Seasonals, "GenreID", "SeasonName", balloon.GenreID);
             ViewBag.ManufactID = new SelectList(db.Manufacturers, "ManufactID", "CompanyName", balloon.ManufactID);
-            ViewBag.TypeID = new SelectList(db.Types, "TypeID", "TypeID", balloon.TypeID);
+            ViewBag.TypeID = new SelectList(db.BalloonTypes, "TypeID", "TypeID", balloon.TypeID);
             return View(balloon);
         }
 

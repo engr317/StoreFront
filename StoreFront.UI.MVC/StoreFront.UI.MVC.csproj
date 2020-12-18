@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccessoriesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BalloonsController.cs" />
+    <Compile Include="Controllers\BalloonTypesController.cs" />
     <Compile Include="Controllers\Billing_InformationController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DistributorsController.cs" />
@@ -182,7 +183,6 @@
     <Compile Include="Controllers\SeasonalsController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
-    <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +203,18 @@
     <Content Include="Content\assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\assets\fonts\slick.svg" />
+    <Content Include="Content\assets\images\Balloons\adventure_begins.jpg" />
+    <Content Include="Content\assets\images\Balloons\colorLatex.jpeg" />
+    <Content Include="Content\assets\images\Balloons\crystal_blue.jpg" />
+    <Content Include="Content\assets\images\Balloons\dracula.jpg" />
+    <Content Include="Content\assets\images\Balloons\easter_eggs.jpg" />
+    <Content Include="Content\assets\images\Balloons\fashion_forest.jpg" />
+    <Content Include="Content\assets\images\Balloons\foilLetters.jpeg" />
+    <Content Include="Content\assets\images\Balloons\foilNumbers.jpeg" />
+    <Content Include="Content\assets\images\Balloons\multiLatex.jpeg" />
+    <Content Include="Content\assets\images\Balloons\redHeartLatex.jpeg" />
+    <Content Include="Content\assets\images\Balloons\yellowEmoji.jpeg" />
+    <Content Include="Content\assets\images\Balloons\yellowLatex.jpeg" />
     <Content Include="Content\assets\images\featured_post_01.jpg" />
     <Content Include="Content\assets\images\icon_01.png" />
     <Content Include="Content\assets\images\icon_02.png" />
@@ -437,11 +449,11 @@
     <Content Include="Views\States\Details.cshtml" />
     <Content Include="Views\States\Edit.cshtml" />
     <Content Include="Views\States\Index.cshtml" />
-    <Content Include="Views\Types\Create.cshtml" />
-    <Content Include="Views\Types\Delete.cshtml" />
-    <Content Include="Views\Types\Details.cshtml" />
-    <Content Include="Views\Types\Edit.cshtml" />
-    <Content Include="Views\Types\Index.cshtml" />
+    <Content Include="Views\BalloonTypes\Create.cshtml" />
+    <Content Include="Views\BalloonTypes\Delete.cshtml" />
+    <Content Include="Views\BalloonTypes\Details.cshtml" />
+    <Content Include="Views\BalloonTypes\Edit.cshtml" />
+    <Content Include="Views\BalloonTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,141 +6,99 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Balloon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SerialNo)
-        </dt>
+<div id="bContainer">
+    <div id="bHeader">
+        @Html.DisplayFor(model => model.BalloonTitle)
+    </div>
+    <div id="bLeft">
+        <p>
+            <img src="~/Content/assets/images/Balloons/@Model.BalloonImg"
+                 alt="@Model.BalloonTitle" />
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.SerialNo)
+                @Html.DisplayFor(model => model.SerialNo)
+            </strong>
+        </p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SerialNo)
-        </dd>
+    <div id="bRight">
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayFor(model => model.Price)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.BalloonStatu.BalloonStatusName)
+                @Html.DisplayFor(model => model.BalloonStatu.BalloonStatusName)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Manufacturer.CompanyName)
+                @Html.DisplayFor(model => model.Manufacturer.CompanyName)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.ProdDate)
+                @Html.DisplayFor(model => model.ProdDate)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Size)
+                @Html.DisplayFor(model => model.Size)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Color)
+                @Html.DisplayFor(model => model.Color)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.IsCategoryFeature)
+                @(Model.IsCategoryFeature ? "Yes" : "No")
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayFor(model => model.Description)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.Seasonal.SeasonName)
+                @Html.DisplayFor(model => model.Seasonal.SeasonName)
+            </strong>
+        </p>
+        <p>
+            <strong>
+                @Html.DisplayNameFor(model => model.UnitsSold)
+                @Html.DisplayFor(model => model.UnitsSold)
+            </strong>
+        </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BalloonTitle)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.BalloonTitle)
-        </dd>
+    <div class="clearfix"></div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <div id="bFooterLeft">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.BalloonID })
+        }
+    </div>
+    <div id="bFooterRight">
+        @Html.ActionLink("Back to Balloons", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+    <div class="clearfix"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsSold)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitsSold)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProdDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BalloonImg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BalloonImg)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsCategoryFeature)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsCategoryFeature)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Accessory.AccessName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Accessory.AccessName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BalloonStatu.BalloonStatusName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BalloonStatu.BalloonStatusName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Distributor.DIstributorName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Distributor.DIstributorName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Seasonal.SeasonName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Seasonal.SeasonName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer.CompanyName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer.CompanyName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type.TypeID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type.TypeID)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BalloonID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

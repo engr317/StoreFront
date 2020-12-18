@@ -37,6 +37,6 @@ namespace StoreFront.DATA.EF
         public virtual DbSet<Seasonal> Seasonals { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<Type> Types { get; set; }
+        public virtual DbSet<BalloonType> BalloonTypes { get; set; }
     }
 }

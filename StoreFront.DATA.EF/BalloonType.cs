@@ -12,10 +12,10 @@ namespace StoreFront.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Type
+    public partial class BalloonType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Type()
+        public BalloonType()
         {
             this.Balloons = new HashSet<Balloon>();
         }

@@ -59,6 +59,9 @@
     <Compile Include="BalloonStatu.cs">
       <DependentUpon>StoreFrontModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BalloonType.cs">
+      <DependentUpon>StoreFrontModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Billing_Information.cs">
       <DependentUpon>StoreFrontModel.tt</DependentUpon>
     </Compile>
@@ -102,9 +105,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StoreFrontModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Type.cs">
-      <DependentUpon>StoreFrontModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
