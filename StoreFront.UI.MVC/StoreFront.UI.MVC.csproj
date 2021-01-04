@@ -196,6 +196,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\ImageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\flex-slider.css" />
@@ -217,30 +218,24 @@
     <Content Include="Content\assets\images\Balloons\redHeartLatex.jpeg" />
     <Content Include="Content\assets\images\Balloons\yellowEmoji.jpeg" />
     <Content Include="Content\assets\images\Balloons\yellowLatex.jpeg" />
-    <Content Include="Content\assets\images\featured_post_01.jpg" />
-    <Content Include="Content\assets\images\icon_01.png" />
-    <Content Include="Content\assets\images\icon_02.png" />
-    <Content Include="Content\assets\images\icon_03.png" />
-    <Content Include="Content\assets\images\icon_04.png" />
-    <Content Include="Content\assets\images\icon_05.png" />
-    <Content Include="Content\assets\images\icon_06.png" />
-    <Content Include="Content\assets\images\icon_hover_01.png" />
-    <Content Include="Content\assets\images\icon_hover_02.png" />
-    <Content Include="Content\assets\images\icon_hover_03.png" />
-    <Content Include="Content\assets\images\icon_hover_04.png" />
-    <Content Include="Content\assets\images\icon_hover_05.png" />
-    <Content Include="Content\assets\images\icon_hover_06.png" />
-    <Content Include="Content\assets\images\left-image.jpg" />
-    <Content Include="Content\assets\images\main-banner.jpg" />
-    <Content Include="Content\assets\images\right-image.jpg" />
-    <Content Include="Content\assets\images\simple-post.jpg" />
-    <Content Include="Content\assets\images\top-image.jpg" />
     <Content Include="Content\assets\js\breakpoints.min.js" />
     <Content Include="Content\assets\js\browser.min.js" />
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\owl-carousel.js" />
     <Content Include="Content\assets\js\transition.js" />
     <Content Include="Content\CustomStyles.css" />
+    <Content Include="Content\imgstore\balloons\t_adventure_begins.jpg" />
+    <Content Include="Content\imgstore\balloons\t_colorLatex.jpeg" />
+    <Content Include="Content\imgstore\balloons\t_crystal_blue.jpg" />
+    <Content Include="Content\imgstore\balloons\t_dracula.jpg" />
+    <Content Include="Content\imgstore\balloons\t_easter_eggs.jpg" />
+    <Content Include="Content\imgstore\balloons\t_fashion_forest.jpg" />
+    <Content Include="Content\imgstore\balloons\t_foilLetters.jpg" />
+    <Content Include="Content\imgstore\balloons\t_foilNumbers.jpg" />
+    <Content Include="Content\imgstore\balloons\t_multiLatex.jpg" />
+    <Content Include="Content\imgstore\balloons\t_redHeartLatex.jpg" />
+    <Content Include="Content\imgstore\balloons\t_yellowEmoji.jpg" />
+    <Content Include="Content\imgstore\balloons\t_yellowLatex.jpg" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -461,6 +456,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\images\Accessories\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

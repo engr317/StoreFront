@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StoreFront.DATA.EF;
+using System.Drawing;
+using StoreFront.UI.MVC.Models;
+using StoreFront.UI.MVC.Utilities;
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -34,6 +37,55 @@ namespace StoreFront.UI.MVC.Controllers
                 return HttpNotFound();
             }
             return View(balloon);
+        }
+
+        public ActionResult AddToCart(int qty, int balloonID)
+        {
+            Dictionary<int, CartItemViewModel> shoppingCart = null;
+
+            if (Session["cart"] != null)
+            {
+                //session cart exsists - puts its items in the local version which is easier to work with
+                shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"];
+                //when we unbox a session object to its smaller more specific type, we use explicit casting
+            }
+            else
+            {
+                //if the sessioncartvariable yet does not exsist, we need to instantize it
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+            } //after this if/else, we have a local cart we can add things to
+
+            //find the product by its id (bookID)
+            Balloon product = db.Balloons.Where(b => b.BalloonID == balloonID).FirstOrDefault();
+            if (product == null)
+            {
+                //if we recieveda bad ID, we need to send them back to some page to try again or we could throw an error message
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                //if book is valid, then add the line item to the cart.
+                CartItemViewModel item = new CartItemViewModel(qty, product);
+                if (shoppingCart.ContainsKey(product.BalloonID))
+                {
+                    //here the product was already in the cart, we just needed to increase the quantity
+                    shoppingCart[product.BalloonID].Qty += qty;
+                }
+                else
+                {
+                    //here the product is being added to the cart for the first time.
+                    shoppingCart.Add(product.BalloonID, item);
+                }
+
+                //now we need to update the session version of the cart so we can maintain that info between request and response cycle
+                Session["cart"] = shoppingCart; //no explicit casting is needed because this is a smaller container going into a larger container
+
+                //confirmation message into a session variable so that it is available after the redirect
+                Session["confirm"] = $"'{product.BalloonTitle}' (Quantity: {qty}) added to cart";
+            }
+
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
         // GET: Balloons/Create

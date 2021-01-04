@@ -1,11 +1,12 @@
-﻿
+﻿@*  this is step 6 in Add to Cart Funtionalilty*@
+
 @*@model IEnumerable<MVC3.UI.MVC.Models.CartItemViewModel> -  this does not reflect the data we are sending to the view*@
 @model Dictionary<int, StoreFront.UI.MVC.Models.CartItemViewModel>
 
 @{
     ViewBag.Title = "Shopping Cart";
 
-    
+    //adding local variables for calculations later on in the page; these will be our running total variables
     decimal? cartTotal = 0;
     int totalCountOfItems = 0;
 }
@@ -45,10 +46,11 @@ else
         </tr>
 
         @foreach (var item in Model)
-        {            
+        {
+            //when calling on an item in a dictionary, you have to specify key or value.
             <tr>
                 <td>
-                    <img src="~/Content/imgstore/books/t_@item.Value.Product.BalloonImg" alt="book cover" title="@item.Value.Product.BalloonTitle" />
+                    <img src="~/Content/imgstore/balloons/t_@item.Value.Product.BalloonImg" alt="balloon Image" title="@item.Value.Product.BalloonTitle" />
                 </td>
                 <td>
                     @*I not only want to show the user the quantity, i want to give the user the ability to edit the quantity*@

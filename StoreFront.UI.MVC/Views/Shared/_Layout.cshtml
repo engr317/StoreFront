@@ -48,6 +48,34 @@
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li><a href="@Url.Action("Index", "Balloons")">Balloons</a></li>
                         <li><a href="@Url.Action("Index", "Accessories")">Accessories</a></li>
+                        <li class="nav-item">
+                            @if (Session["cart"] != null &&
+                                ((Dictionary<int, StoreFront.UI.MVC.Models.CartItemViewModel>)Session["cart"]).Count > 0)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Index", "ShoppingCart")">
+                                    Cart<i class="fa fa-shopping-cart"></i>
+                                    
+                                    @{
+                                        //shows the number of types of items but doesnt reflect the numbers of each.
+                                        //int items = ((Dictionary<int, MVC3.UI.MVC.Models.CartItemViewModel>)Session["cart"]).Count;
+
+                                        Dictionary<int, StoreFront.UI.MVC.Models.CartItemViewModel> cartItems = (Dictionary<int, StoreFront.UI.MVC.Models.CartItemViewModel>)Session["cart"];
+
+                                        int items = 0;
+
+                                        foreach (var item in cartItems)
+                                        {
+                                            items += item.Value.Qty;
+                                        }
+                                    }
+                                    @items
+                                </a>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Cart", "Index", "ShoppingCart")
+                            }                            
+                        </li>
                         @*<li>
             <span class="opener"><a href="@Url.Action("Index", "Home")">MenuChoice</a></span>
             <ul>

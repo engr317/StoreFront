@@ -14,8 +14,7 @@ namespace StoreFront.UI.MVC.Models
         public Balloon Product { get; set; }
 
         public CartItemViewModel(int qty, Balloon product)
-        {
-            //property = parameter            
+        {                        
             Product = product;
             Qty = qty;
         }

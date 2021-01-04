@@ -53,7 +53,7 @@ namespace StoreFront.DATA.EF
         [Required(ErrorMessage = "* Category is required")]
         public bool IsCategoryFeature { get; set; }
 
-        [Display(Name = "Balloon Status")]
+        [Display(Name = "Status")]
         public int BalloonStatusID { get; set; }
 
         [Display(Name = "Type")]
@@ -86,7 +86,7 @@ namespace StoreFront.DATA.EF
     {
         [Required(ErrorMessage = "* Required")]
         [StringLength(15, ErrorMessage = "* Balloon Status must be 15 characters or less. ")]
-        [Display(Name = "Balloon Status")]
+        [Display(Name = "Status")]
         public string BalloonStatusName { get; set; }
 
         [DisplayFormat(NullDisplayText = "[N/A]")]
