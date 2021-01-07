@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6cca643d19a94222ad6df89ea027aefb" Name="Diagram1">
-        <EntityTypeShape EntityType="BalloonsModel.Accessory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Balloon" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.BalloonStatu" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Billing_Information" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
@@ -17,7 +16,6 @@
         <EntityTypeShape EntityType="BalloonsModel.Seasonal" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Shipper" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.State" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="BalloonsModel.FK_Balloons_Accessories" ManuallyRouted="false" />
         <AssociationConnector Association="BalloonsModel.FK_Balloons_BalloonStatus" ManuallyRouted="false" />
         <AssociationConnector Association="BalloonsModel.FK_Balloons_Distributors1" ManuallyRouted="false" />
         <AssociationConnector Association="BalloonsModel.FK_Balloons_Genres" ManuallyRouted="false" />
@@ -31,6 +29,8 @@
         <AssociationConnector Association="BalloonsModel.FK_Shippers_States" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BalloonsModel.BalloonType" Width="1.5" PointX="10.375" PointY="0.875" />
         <AssociationConnector Association="BalloonsModel.FK_Balloons_Type" />
+        <EntityTypeShape EntityType="BalloonsModel.Accessory" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="BalloonsModel.FK_Balloons_Accessories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

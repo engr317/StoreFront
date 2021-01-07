@@ -38,7 +38,6 @@ namespace StoreFront.DATA.EF
         public int ManufactID { get; set; }
         public Nullable<int> AccessID { get; set; }
     
-        public virtual Accessory Accessory { get; set; }
         public virtual BalloonStatu BalloonStatu { get; set; }
         public virtual Distributor Distributor { get; set; }
         public virtual Seasonal Seasonal { get; set; }
@@ -46,5 +45,6 @@ namespace StoreFront.DATA.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipper> Shippers { get; set; }
         public virtual BalloonType BalloonType { get; set; }
+        public virtual Accessory Accessory { get; set; }
     }
 }

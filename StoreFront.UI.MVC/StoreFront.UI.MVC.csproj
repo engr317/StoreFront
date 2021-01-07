@@ -206,6 +206,14 @@
     <Content Include="Content\assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\assets\fonts\slick.svg" />
+    <Content Include="Content\assets\images\Accessories\largeBow.jpg" />
+    <Content Include="Content\assets\images\Accessories\largeTeddy.jpg" />
+    <Content Include="Content\assets\images\Accessories\largeVase.jpg" />
+    <Content Include="Content\assets\images\Accessories\medBow.jpg" />
+    <Content Include="Content\assets\images\Accessories\medVase.jpg" />
+    <Content Include="Content\assets\images\Accessories\smallBow.jpg" />
+    <Content Include="Content\assets\images\Accessories\smallFuzzy.jpg" />
+    <Content Include="Content\assets\images\Accessories\smallVase.jpg" />
     <Content Include="Content\assets\images\Balloons\adventure_begins.jpg" />
     <Content Include="Content\assets\images\Balloons\colorLatex.jpeg" />
     <Content Include="Content\assets\images\Balloons\crystal_blue.jpg" />
@@ -218,6 +226,7 @@
     <Content Include="Content\assets\images\Balloons\redHeartLatex.jpeg" />
     <Content Include="Content\assets\images\Balloons\yellowEmoji.jpeg" />
     <Content Include="Content\assets\images\Balloons\yellowLatex.jpeg" />
+    <Content Include="Content\assets\images\happyTime.JPG" />
     <Content Include="Content\assets\js\breakpoints.min.js" />
     <Content Include="Content\assets\js\browser.min.js" />
     <Content Include="Content\assets\js\custom.js" />
@@ -455,7 +464,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\assets\images\Accessories\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

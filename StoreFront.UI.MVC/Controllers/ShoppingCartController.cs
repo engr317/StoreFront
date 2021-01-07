@@ -47,13 +47,13 @@ namespace StoreFront.UI.MVC.Controllers
         }
 
         //Add to Cart Step 8
-        public ActionResult UpdateCart(int bookID, int qty)
+        public ActionResult UpdateCart(int balloonID, int qty)
         {
             //get the cart out of session and into a local variable
             Dictionary<int, CartItemViewModel> shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"];
 
-            //target the correct item in teh car using the bookID for key and then we will change the quantity for that item
-            shoppingCart[bookID].Qty = qty;
+            //target the correct item in teh car using the ID for key and then we will change the quantity for that item
+            shoppingCart[balloonID].Qty = qty;
 
             //return the local shopping cart to the session variable and send the user back to the shopping cart index to see the results.
             Session["cart"] = shoppingCart;

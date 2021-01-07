@@ -8,6 +8,35 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StoreFront.DATA.EF
 {
+    #region Accessories MetaData
+    public class AccessoriesMetaData
+    {
+        [Key]        
+        public int AccessID { get; set; }
+
+        [Display(Name = "Accessory Name")]
+        [Required(ErrorMessage = "* Name is required")]
+        [StringLength(50, ErrorMessage = "* Accessory name must be 50 characters or less.")]
+        public string AccessName { get; set; }
+
+
+        [Display(Name = "Description")]
+        [UIHint("MultilineText")]
+        [DisplayFormat(NullDisplayText = "[N/A]")]
+        [Required(ErrorMessage = "* Description is required")]
+        public string AccessDesc { get; set; }
+
+
+        [Display(Name = "Image")]
+        [Required(ErrorMessage = "Please select file.")]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        public string AccessImg { get; set; }
+    }
+    [MetadataType(typeof(AccessoriesMetaData))]
+    public partial class Accessory { }
+
+    #endregion
+
     #region Balloon MetaData
     public class BalloonMetaData
     {

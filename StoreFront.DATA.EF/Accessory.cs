@@ -23,6 +23,7 @@ namespace StoreFront.DATA.EF
         public int AccessID { get; set; }
         public string AccessName { get; set; }
         public string AccessDesc { get; set; }
+        public string AccessImg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Balloon> Balloons { get; set; }
