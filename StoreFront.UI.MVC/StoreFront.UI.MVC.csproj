@@ -404,7 +404,6 @@
     <Content Include="Views\Accessories\Delete.cshtml" />
     <Content Include="Views\Accessories\Details.cshtml" />
     <Content Include="Views\Accessories\Edit.cshtml" />
-    <Content Include="Views\Accessories\Index.cshtml" />
     <Content Include="Views\Balloons\Create.cshtml" />
     <Content Include="Views\Balloons\Delete.cshtml" />
     <Content Include="Views\Balloons\Details.cshtml" />
@@ -461,6 +460,7 @@
     <Content Include="Views\BalloonTypes\Edit.cshtml" />
     <Content Include="Views\BalloonTypes\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Accessories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
