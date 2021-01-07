@@ -1,43 +1,47 @@
 ﻿@model StoreFront.DATA.EF.Accessory
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = $"{Model.AccessName}";
 }
 
 <h2>@ViewBag.Title</h2>
 
-<div id="aContainer">
-    <div id="aHeader">
-        @Html.DisplayFor(model => model.AccessName)
-    </div>
+<div id="aContainer">    
     <div id="aLeft">
         <p>
             <img src="~/Content/assets/images/Accessories/@Model.AccessImg" alt="@Model.AccessName" />
         </p>
-        <p>
-            <strong>
-                @Html.DisplayNameFor(model => model.AccessName)
-            </strong>
-        </p>
-
     </div>
     <div id="aRight">
         <p>
             <strong>
                 @Html.DisplayNameFor(model => model.AccessDesc)
                 @Html.DisplayFor(model => model.AccessDesc)
-            </strong>
+            </strong>            
+        </p>
+        <p>
+            @* signature("action", "controller", routeValues, FormMethod, htmlAttributes) *@
+            @using (Html.BeginForm("AddToCart", "Accessories", new { @AccessID = Model.AccessID }, FormMethod.Post, new { @class = "text-center" }))
+            {
+                @Html.HiddenFor(x => x.AccessID)
+                <span class="label cart-label">Quantity:</span>
+                @Html.TextBox("Qty", 1, new { @class = "form-control", @style = "max-width: 50px; display:inline;" })
+                <input type="submit" value="Add to Cart" class="btn btn-primary" name="qty" />
+            }
         </p>
     </div>
+
     <div class="clearfix"></div>
+
     <div id="bFooterLeft">
         @if (User.IsInRole("Admin"))
         {
             @Html.ActionLink("Edit", "Edit", new { id = Model.AccessID })
         }
+        
     </div>
     <div id="bFooterRight">
-        @Html.ActionLink("Back to Books", "Index", null, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("-Back to Shopping-", "Index", null, new { @class = "btn btn-secondary" })
     </div>
 
     <div class="clearfix"></div>

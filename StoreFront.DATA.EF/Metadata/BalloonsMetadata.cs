@@ -61,7 +61,7 @@ namespace StoreFront.DATA.EF
         public Nullable<decimal> Price { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "*Value must be a valid number, 0 or larger")]
-        [DisplayFormat(DataFormatString = "{0:c}", NullDisplayText = "[N/A]")]
+        [DisplayFormat(DataFormatString = "{0}", NullDisplayText = "[N/A]")]
         [Display(Name = "Units Sold")]
         public Nullable<int> UnitsSold { get; set; }
 
@@ -75,7 +75,7 @@ namespace StoreFront.DATA.EF
 
         [Display(Name = "Image")]
         [Required(ErrorMessage = "Please select file.")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.jpeg|.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
         public string BalloonImg { get; set; }
 
         [Display(Name = "Category Feature")]

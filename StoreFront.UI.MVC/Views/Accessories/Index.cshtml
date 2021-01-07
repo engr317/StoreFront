@@ -6,9 +6,14 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -29,7 +34,7 @@
         <tr>
             <td>
                 <a href="@Url.Action("Details", new {id= item.AccessID})">
-                    <img src="~/Content/imgstore/balloons/t_@item.AccessImg" />
+                    <img src="~/Content/assets/images/Accessories/t_@item.AccessImg" />
                 </a>
             </td>
             <td>
