@@ -225,6 +225,9 @@
     <Content Include="Content\assets\images\Accessories\t_smallTeddy.jpg" />
     <Content Include="Content\assets\images\Accessories\t_smallVase.jpg" />
     <Content Include="Content\assets\images\Balloons\adventure_begins.jpg" />
+    <Content Include="Content\assets\images\Balloons\balloonbanner.jpg" />
+    <Content Include="Content\assets\images\Balloons\balloonbanner.png" />
+    <Content Include="Content\assets\images\Balloons\balloonbannerJPG.jpg" />
     <Content Include="Content\assets\images\Balloons\colorLatex.jpeg" />
     <Content Include="Content\assets\images\Balloons\crystal_blue.jpg" />
     <Content Include="Content\assets\images\Balloons\dracula.jpg" />

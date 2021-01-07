@@ -10,6 +10,20 @@ img {
     width: auto;
 }
 
+#header .logo
+{
+    background-image: url(assets/images/Balloons/balloonbanner.jpg);
+    border-bottom:3px solid black;
+
+}
+    #header .logo a {
+        color: black;
+    }
+
+#sidebar .toggle{
+    color:black;
+}
+
 /* Accessories Details */
 #aContainer {
     border: 3px solid #535BA0;
@@ -17,7 +31,7 @@ img {
     padding: 1em;
 }
 
-aHeader {
+#aHeader {
     font-size: 1.25em;
     font-weight: 700;
     text-align: center;
