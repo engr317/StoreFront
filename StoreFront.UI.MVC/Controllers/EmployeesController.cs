@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StoreFront.DATA.EF;
+using StoreFront.UI.MVC.Models;
+
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -17,8 +19,9 @@ namespace StoreFront.UI.MVC.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var employees = db.Employees.Include(e => e.Department).Include(e => e.Employee1);
-            return View(employees.ToList());
+            //var employees = db.Employees.Include(e => e.Department).Include(e => e.Employees);
+            //return View(employees.ToList());
+            return View();
         }
 
         // GET: Employees/Details/5

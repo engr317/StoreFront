@@ -25,41 +25,47 @@
         <th>
             @Html.DisplayNameFor(model => model.AccessDesc)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
 
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <a href="@Url.Action("Details", new {id= item.AccessID})">
-                    <img src="~/Content/assets/images/Accessories/t_@item.AccessImg" />
-                </a>
-            </td>
-            <td>
-                <a href="@Url.Action("Details", new {id= item.AccessID})"
-                   title="@item.AccessName">
-                    @Html.DisplayFor(modelItem => item.AccessName)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccessDesc)
-            </td>
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", new {id= item.AccessID})">
+                <img src="~/Content/assets/images/Accessories/t_@item.AccessImg" />
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Action("Details", new {id= item.AccessID})"
+               title="@item.AccessName">
+                @Html.DisplayFor(modelItem => item.AccessName)
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccessDesc)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Price)
+        </th>
 
-            @if (User.IsInRole("Admin"))
+        @if (User.IsInRole("Admin"))
 
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.AccessID })|
-                    @Html.ActionLink("Delete", "Delete", new { id = item.AccessID }, new { @class = "text-danger" })
-                </td>
-            }
-
+        {
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.AccessID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.AccessID })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.AccessID }, new { @class = "text-danger" })
             </td>
-        </tr>
+        }
+
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.AccessID })
+        </td>
+    </tr>
     }
 
 </table>

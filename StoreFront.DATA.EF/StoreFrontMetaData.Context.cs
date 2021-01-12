@@ -25,8 +25,10 @@ namespace StoreFront.DATA.EF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Accessory> Accessories { get; set; }
         public virtual DbSet<Balloon> Balloons { get; set; }
         public virtual DbSet<BalloonStatu> BalloonStatus { get; set; }
+        public virtual DbSet<BalloonType> BalloonTypes { get; set; }
         public virtual DbSet<Billing_Information> Billing_Information { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Distributor> Distributors { get; set; }
@@ -36,7 +38,5 @@ namespace StoreFront.DATA.EF
         public virtual DbSet<Seasonal> Seasonals { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<BalloonType> BalloonTypes { get; set; }
-        public virtual DbSet<Accessory> Accessories { get; set; }
     }
 }

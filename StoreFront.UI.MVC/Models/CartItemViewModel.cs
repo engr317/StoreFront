@@ -12,11 +12,20 @@ namespace StoreFront.UI.MVC.Models
         [Range(1, int.MaxValue)]
         public int Qty { get; set; }
         public Balloon Product { get; set; }
+        public Accessory ProductA { get; set; }
 
         public CartItemViewModel(int qty, Balloon product)
         {                        
             Product = product;
             Qty = qty;
         }
+        public CartItemViewModel(int qty, Accessory product)
+        {
+            ProductA = product;
+            Qty = qty;
+        }
     }
+     
+    
+
 }

@@ -31,6 +31,14 @@ namespace StoreFront.DATA.EF
         [Required(ErrorMessage = "Please select file.")]
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
         public string AccessImg { get; set; }
+
+
+        [Range(0.01, 100.00,
+            ErrorMessage = "Price must be between 0.01 and 100.00")]
+        [DisplayFormat(DataFormatString = "{0:c}", NullDisplayText = "[N/A]")]
+        [Display(Name = "Price")]
+        [Required(ErrorMessage = "* Price is required")]
+        public Nullable<decimal> Price { get; set; }
     }
     [MetadataType(typeof(AccessoriesMetaData))]
     public partial class Accessory { }
@@ -50,7 +58,7 @@ namespace StoreFront.DATA.EF
         [Required(ErrorMessage = "* Description is required")]
         public string Description { get; set; }
 
-        [Key]
+        
         public int GenreID { get; set; }
 
         [Range(0.01, 100.00,
@@ -69,7 +77,7 @@ namespace StoreFront.DATA.EF
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "[N/A]")]
         public Nullable<System.DateTime> ProdDate { get; set; }
 
-        [Key]
+       
         [Display(Name = "Distributor")]
         public int DistributorsID { get; set; }
 
@@ -90,18 +98,18 @@ namespace StoreFront.DATA.EF
         [DisplayFormat(NullDisplayText = "City is null")]
         public Nullable<int> TypeID { get; set; }
 
-        [Display(Name = "Size")]
+        [Display(Name = "Size:")]
         [Required(ErrorMessage = "* Size is required")]
         public string Size { get; set; }
 
-        [Display(Name = "Color")]
+        [Display(Name = "Color:")]
         [Required(ErrorMessage = "* Color is required")]
         public string Color { get; set; }
 
-        [Key]
+        
         public int ManufactID { get; set; }
 
-        [Key]
+        
         [DisplayFormat(NullDisplayText = "[N/A]")]
         public Nullable<int> AccessID { get; set; }
     }
@@ -115,7 +123,7 @@ namespace StoreFront.DATA.EF
     {
         [Required(ErrorMessage = "* Required")]
         [StringLength(15, ErrorMessage = "* Balloon Status must be 15 characters or less. ")]
-        [Display(Name = "Status")]
+        [Display(Name = "Status:")]
         public string BalloonStatusName { get; set; }
 
         [DisplayFormat(NullDisplayText = "[N/A]")]
@@ -321,6 +329,17 @@ namespace StoreFront.DATA.EF
     }
     [MetadataType(typeof(ShipperMetaData))]
     public partial class Shipper { }
+    #endregion
+
+    #region BalloonType MetaData
+    public class BalloonTypeMetaData
+    {
+        [Display(Name = "Mylar")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "The field Mylar must be checked.")]
+        public bool IsMylar { get; set; }        
+    }
+    [MetadataType(typeof(BalloonTypeMetaData))]
+    public partial class BalloonType { }
     #endregion
 
 }

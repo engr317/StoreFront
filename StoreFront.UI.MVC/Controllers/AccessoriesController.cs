@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StoreFront.DATA.EF;
+using System.Drawing;
+using StoreFront.UI.MVC.Models;
+using StoreFront.UI.MVC.Utilities;
+
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -33,6 +37,44 @@ namespace StoreFront.UI.MVC.Controllers
                 return HttpNotFound();
             }
             return View(accessory);
+        }
+
+        public ActionResult AddToCart(int qty, int AccessID)
+        {
+            Dictionary<int, CartItemViewModel> shoppingCart = null;
+
+            if (Session["cart"] != null)
+            {
+                shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"];
+            }
+            else
+            {
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+            }
+
+            Accessory product = db.Accessories.Where(a => a.AccessID == AccessID).FirstOrDefault();
+            if (product == null)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                CartItemViewModel item = new CartItemViewModel(qty, product);
+                if (shoppingCart.ContainsKey(product.AccessID))
+                {
+
+                    shoppingCart[product.AccessID].Qty += qty;
+                }
+                else
+                {
+
+                    shoppingCart.Add(product.AccessID, item);
+                }
+                Session["cart"] = shoppingCart;
+
+                Session["confirm"] = $"'{product.AccessName}' (Quantity: {qty}) added to cart";
+            }
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
         // GET: Accessories/Create

@@ -47,43 +47,85 @@ else
 
         @foreach (var item in Model)
         {
-            //when calling on an item in a dictionary, you have to specify key or value.
-            <tr>
-                <td>
-                    <img src="~/Content/imgstore/balloons/t_@item.Value.Product.BalloonImg" alt="balloon Image" title="@item.Value.Product.BalloonTitle" />
-                </td>
-                <td>
-                    @*I not only want to show the user the quantity, i want to give the user the ability to edit the quantity*@
-                    @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
-                    {
-                        @Html.Hidden("balloonID", item.Value.Product.BalloonID)
-                        @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "max-width:50px; display:inline;" })
-                        <input type="submit" value="Update Quantity" class="btn btn-info " />
-                    }
+            if (item.Value.Product != null)
+            {
+                <tr>
+                    <td>
+                        <img src="~/Content/assets/images/balloons/t_@item.Value.Product.BalloonImg" alt="balloon Image" title="@item.Value.Product.BalloonTitle" />
+                    </td>
+                    <td>
+                        @*I not only want to show the user the quantity, i want to give the user the ability to edit the quantity*@
+                        @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+                        {
+                            @Html.Hidden("balloonID", item.Value.Product.BalloonID)
+                            @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "max-width:50px; display:inline;" })
+                            <input type="submit" value="Update Quantity" class="btn btn-info " />
+                        }
 
-                    @{
-                        //calculate the total number of items in the cart
-                        totalCountOfItems += item.Value.Qty;
-                    }
-                </td>
-                <td>
-                    @item.Value.Product.BalloonTitle
-                </td>
-                <td>
-                    @string.Format($"{item.Value.Product.Price:c}")
-                </td>
-                <td>
-                    @*Calculate the line item total and update the runnign total variable for each row.*@
-                    @{
-                        decimal? lineTotal = item.Value.Product.Price * item.Value.Qty;
-                        cartTotal += lineTotal;
-                    }
-                    @string.Format($"{lineTotal:c}")
-                </td>
-                <td>
-                    @Html.ActionLink("Remove from Cart", "RemoveFromCart", new { id = item.Value.Product.BalloonID })
-                </td>
-            </tr>
+                        @{
+                            //calculate the total number of items in the cart
+                            totalCountOfItems += item.Value.Qty;
+                        }
+                    </td>
+                    <td>
+                        @item.Value.Product.BalloonTitle
+                    </td>
+                    <td>
+                        @string.Format($"{item.Value.Product.Price:c}")
+                    </td>
+                    <td>
+                        @*Calculate the line item total and update the runnign total variable for each row.*@
+                        @{
+                            decimal? lineTotal = item.Value.Product.Price * item.Value.Qty;
+                            cartTotal += lineTotal;
+                        }
+                        @string.Format($"{lineTotal:c}")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove from Cart", "RemoveFromCart", new { id = item.Value.Product.BalloonID })
+                    </td>
+                </tr>
+            }
+            else if (item.Value.ProductA != null)
+            {
+                <tr>
+                    <td>
+                        <img src="~/Content/assets/images/Accessories/t_@item.Value.ProductA.AccessImg" alt="Accessory Image" title="@item.Value.ProductA.AccessName" />
+                    </td>
+                    <td>
+                        @*I not only want to show the user the quantity, i want to give the user the ability to edit the quantity*@
+                        @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+                        {
+                            @Html.Hidden("accessID", item.Value.ProductA.AccessID)
+                            @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "max-width:50px; display:inline;" })
+                            <input type="submit" value="Update Quantity" class="btn btn-info " />
+                        }
+
+                        @{
+                            //calculate the total number of items in the cart
+                            totalCountOfItems += item.Value.Qty;
+                        }
+                    </td>
+                    <td>
+                        @item.Value.ProductA.AccessName
+                    </td>
+                    <td>
+                        @string.Format($"{item.Value.ProductA.Price:c}")
+                    </td>
+                    <td>
+                        @*Calculate the line item total and update the running total variable for each row.*@
+                        @{
+                            decimal? lineTotal = item.Value.ProductA.Price * item.Value.Qty;
+                            cartTotal += lineTotal;
+                        }
+                        @string.Format($"{lineTotal:c}")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove from Cart", "RemoveFromCart", new { id = item.Value.ProductA.AccessID })
+                    </td>
+                </tr>
+            }
+
         }
 
     </table>

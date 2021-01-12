@@ -228,7 +228,7 @@
     <Content Include="Content\assets\images\Balloons\balloonbanner.jpg" />
     <Content Include="Content\assets\images\Balloons\balloonbanner.png" />
     <Content Include="Content\assets\images\Balloons\balloonbannerJPG.jpg" />
-    <Content Include="Content\assets\images\Balloons\colorLatex.jpeg" />
+    <Content Include="Content\assets\images\Balloons\colorLatex.jpg" />
     <Content Include="Content\assets\images\Balloons\crystal_blue.jpg" />
     <Content Include="Content\assets\images\Balloons\dracula.jpg" />
     <Content Include="Content\assets\images\Balloons\easter_eggs.jpg" />
@@ -246,18 +246,18 @@
     <Content Include="Content\assets\js\owl-carousel.js" />
     <Content Include="Content\assets\js\transition.js" />
     <Content Include="Content\CustomStyles.css" />
-    <Content Include="Content\imgstore\balloons\t_adventure_begins.jpg" />
-    <Content Include="Content\imgstore\balloons\t_colorLatex.jpeg" />
-    <Content Include="Content\imgstore\balloons\t_crystal_blue.jpg" />
-    <Content Include="Content\imgstore\balloons\t_dracula.jpg" />
-    <Content Include="Content\imgstore\balloons\t_easter_eggs.jpg" />
-    <Content Include="Content\imgstore\balloons\t_fashion_forest.jpg" />
-    <Content Include="Content\imgstore\balloons\t_foilLetters.jpg" />
-    <Content Include="Content\imgstore\balloons\t_foilNumbers.jpg" />
-    <Content Include="Content\imgstore\balloons\t_multiLatex.jpg" />
-    <Content Include="Content\imgstore\balloons\t_redHeartLatex.jpg" />
-    <Content Include="Content\imgstore\balloons\t_yellowEmoji.jpg" />
-    <Content Include="Content\imgstore\balloons\t_yellowLatex.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_adventure_begins.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_colorLatex.jpeg" />
+    <Content Include="Content\assets\images\Balloons\t_crystal_blue.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_dracula.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_easter_eggs.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_fashion_forest.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_foilLetters.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_foilNumbers.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_multiLatex.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_redHeartLatex.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_yellowEmoji.jpg" />
+    <Content Include="Content\assets\images\Balloons\t_yellowLatex.jpg" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -347,7 +347,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -477,6 +479,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\imgstore\accessories\" />
+    <Folder Include="Content\imgstore\balloons\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

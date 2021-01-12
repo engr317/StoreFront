@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BalloonsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BalloonsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accessories">
           <Key>
             <PropertyRef Name="AccessID" />
@@ -13,6 +13,7 @@
           <Property Name="AccessName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="AccessDesc" Type="nvarchar(max)" />
           <Property Name="AccessImg" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Balloons">
           <Key>
@@ -23,7 +24,7 @@
           <Property Name="BalloonTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="GenreID" Type="int" Nullable="false" />
-          <Property Name="Price" Type="money" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
           <Property Name="UnitsSold" Type="int" />
           <Property Name="ProdDate" Type="date" />
           <Property Name="DistributorsID" Type="int" Nullable="false" />
@@ -263,18 +264,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employees_Employees">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Employees1" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Employees1">
-              <PropertyRef Name="ReportID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Manufacturers_States">
           <End Role="States" Type="Self.States" Multiplicity="1" />
           <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="*" />
@@ -361,10 +350,6 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Employees1" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Manufacturers_States" Association="Self.FK_Manufacturers_States">
             <End Role="States" EntitySet="States" />
             <End Role="Manufacturers" EntitySet="Manufacturers" />
@@ -378,10 +363,22 @@
             <End Role="Shippers" EntitySet="Shippers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BalloonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accessory">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccessImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Accessories" FromRole="Accessories" ToRole="Balloons" />
+        </EntityType>
         <EntityType Name="Balloon">
           <Key>
             <PropertyRef Name="BalloonID" />
@@ -391,7 +388,7 @@
           <Property Name="BalloonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GenreID" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="UnitsSold" Type="Int32" />
           <Property Name="ProdDate" Type="DateTime" Precision="0" />
           <Property Name="DistributorsID" Type="Int32" Nullable="false" />
@@ -403,13 +400,13 @@
           <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ManufactID" Type="Int32" Nullable="false" />
           <Property Name="AccessID" Type="Int32" />
+          <NavigationProperty Name="Accessory" Relationship="Self.FK_Balloons_Accessories" FromRole="Balloons" ToRole="Accessories" />
           <NavigationProperty Name="BalloonStatu" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="Balloons" ToRole="BalloonStatus" />
           <NavigationProperty Name="Distributor" Relationship="Self.FK_Balloons_Distributors1" FromRole="Balloons" ToRole="Distributors" />
           <NavigationProperty Name="Seasonal" Relationship="Self.FK_Balloons_Genres" FromRole="Balloons" ToRole="Seasonal" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Balloons_Manufacturers" FromRole="Balloons" ToRole="Manufacturers" />
+          <NavigationProperty Name="BalloonType" Relationship="Self.FK_Balloons_Type" FromRole="Balloons" ToRole="BalloonType" />
           <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipping_Balloons" FromRole="Balloons" ToRole="Shippers" />
-          <NavigationProperty Name="BalloonType" Relationship="BalloonsModel.FK_Balloons_Type" FromRole="Balloon" ToRole="BalloonType" />
-          <NavigationProperty Name="Accessory" Relationship="BalloonsModel.FK_Balloons_Accessories" FromRole="Balloon" ToRole="Accessory" />
         </EntityType>
         <EntityType Name="BalloonStatu">
           <Key>
@@ -419,6 +416,15 @@
           <Property Name="BalloonStatusName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="BalloonStatus" ToRole="Balloons" />
+        </EntityType>
+        <EntityType Name="BalloonType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsMylar" Type="Boolean" Nullable="false" />
+          <Property Name="IsLatex" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Balloons" Relationship="Self.FK_Balloons_Type" FromRole="BalloonType" ToRole="Balloons" />
         </EntityType>
         <EntityType Name="Billing_Information">
           <Key>
@@ -469,8 +475,6 @@
           <Property Name="ReportID" Type="Int32" Nullable="false" />
           <Property Name="DeptID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
-          <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -539,6 +543,18 @@
           <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Manufacturers_States" FromRole="States" ToRole="Manufacturers" />
           <NavigationProperty Name="Shippers" Relationship="Self.FK_Shippers_States" FromRole="States" ToRole="Shippers" />
         </EntityType>
+        <Association Name="FK_Balloons_Accessories">
+          <End Role="Accessories" Type="Self.Accessory" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="AccessID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="AccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Balloons_BalloonStatus">
           <End Role="BalloonStatus" Type="Self.BalloonStatu" Multiplicity="1" />
           <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
@@ -584,6 +600,18 @@
             </Principal>
             <Dependent Role="Balloons">
               <PropertyRef Name="ManufactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Balloons_Type">
+          <End Role="BalloonType" Type="Self.BalloonType" Multiplicity="0..1" />
+          <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BalloonType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Balloons">
+              <PropertyRef Name="TypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -635,18 +663,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employees_Employees">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Employees1" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Employees1">
-              <PropertyRef Name="ReportID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Manufacturers_States">
           <End Role="States" Type="Self.State" Multiplicity="1" />
           <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="*" />
@@ -672,8 +688,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BalloonsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessories" EntityType="Self.Accessory" />
           <EntitySet Name="Balloons" EntityType="Self.Balloon" />
           <EntitySet Name="BalloonStatus" EntityType="Self.BalloonStatu" />
+          <EntitySet Name="BalloonTypes" EntityType="Self.BalloonType" />
           <EntitySet Name="Billing_Information" EntityType="Self.Billing_Information" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Distributors" EntityType="Self.Distributor" />
@@ -683,6 +701,10 @@
           <EntitySet Name="Seasonals" EntityType="Self.Seasonal" />
           <EntitySet Name="Shippers" EntityType="Self.Shipper" />
           <EntitySet Name="States" EntityType="Self.State" />
+          <AssociationSet Name="FK_Balloons_Accessories" Association="Self.FK_Balloons_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
           <AssociationSet Name="FK_Balloons_BalloonStatus" Association="Self.FK_Balloons_BalloonStatus">
             <End Role="BalloonStatus" EntitySet="BalloonStatus" />
             <End Role="Balloons" EntitySet="Balloons" />
@@ -697,6 +719,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Balloons_Manufacturers" Association="Self.FK_Balloons_Manufacturers">
             <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Balloons" EntitySet="Balloons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Balloons_Type" Association="Self.FK_Balloons_Type">
+            <End Role="BalloonType" EntitySet="BalloonTypes" />
             <End Role="Balloons" EntitySet="Balloons" />
           </AssociationSet>
           <AssociationSet Name="FK_Shipping_Balloons" Association="Self.FK_Shipping_Balloons">
@@ -715,10 +741,6 @@
             <End Role="States" EntitySet="States" />
             <End Role="Distributors" EntitySet="Distributors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Employees1" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Manufacturers_States" Association="Self.FK_Manufacturers_States">
             <End Role="States" EntitySet="States" />
             <End Role="Manufacturers" EntitySet="Manufacturers" />
@@ -727,66 +749,24 @@
             <End Role="States" EntitySet="States" />
             <End Role="Shippers" EntitySet="Shippers" />
           </AssociationSet>
-          <EntitySet Name="BalloonTypes" EntityType="BalloonsModel.BalloonType" />
-          <AssociationSet Name="FK_Balloons_Type" Association="BalloonsModel.FK_Balloons_Type">
-            <End Role="BalloonType" EntitySet="BalloonTypes" />
-            <End Role="Balloon" EntitySet="Balloons" />
-          </AssociationSet>
-          <EntitySet Name="Accessories" EntityType="BalloonsModel.Accessory" />
-          <AssociationSet Name="FK_Balloons_Accessories" Association="BalloonsModel.FK_Balloons_Accessories">
-            <End Role="Accessory" EntitySet="Accessories" />
-            <End Role="Balloon" EntitySet="Balloons" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BalloonType">
-          <Key>
-            <PropertyRef Name="TypeID" />
-          </Key>
-          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IsMylar" Type="Boolean" Nullable="false" />
-          <Property Name="IsLatex" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Balloons" Relationship="BalloonsModel.FK_Balloons_Type" FromRole="BalloonType" ToRole="Balloon" />
-        </EntityType>
-        <Association Name="FK_Balloons_Type">
-          <End Type="BalloonsModel.BalloonType" Role="BalloonType" Multiplicity="0..1" />
-          <End Type="BalloonsModel.Balloon" Role="Balloon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BalloonType">
-              <PropertyRef Name="TypeID" />
-            </Principal>
-            <Dependent Role="Balloon">
-              <PropertyRef Name="TypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Accessory">
-          <Key>
-            <PropertyRef Name="AccessID" />
-          </Key>
-          <Property Name="AccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AccessName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="AccessDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AccessImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Balloons" Relationship="BalloonsModel.FK_Balloons_Accessories" FromRole="Accessory" ToRole="Balloon" />
-        </EntityType>
-        <Association Name="FK_Balloons_Accessories">
-          <End Type="BalloonsModel.Accessory" Role="Accessory" Multiplicity="0..1" />
-          <End Type="BalloonsModel.Balloon" Role="Balloon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accessory">
-              <PropertyRef Name="AccessID" />
-            </Principal>
-            <Dependent Role="Balloon">
-              <PropertyRef Name="AccessID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BalloonsModelStoreContainer" CdmEntityContainer="BalloonsEntities">
+          <EntitySetMapping Name="Accessories">
+            <EntityTypeMapping TypeName="BalloonsModel.Accessory">
+              <MappingFragment StoreEntitySet="Accessories">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="AccessName" ColumnName="AccessName" />
+                <ScalarProperty Name="AccessDesc" ColumnName="AccessDesc" />
+                <ScalarProperty Name="AccessImg" ColumnName="AccessImg" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Balloons">
             <EntityTypeMapping TypeName="BalloonsModel.Balloon">
               <MappingFragment StoreEntitySet="Balloons">
@@ -816,6 +796,15 @@
                 <ScalarProperty Name="BalloonStatusID" ColumnName="BalloonStatusID" />
                 <ScalarProperty Name="BalloonStatusName" ColumnName="BalloonStatusName" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BalloonTypes">
+            <EntityTypeMapping TypeName="BalloonsModel.BalloonType">
+              <MappingFragment StoreEntitySet="BalloonType">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="IsMylar" ColumnName="IsMylar" />
+                <ScalarProperty Name="IsLatex" ColumnName="IsLatex" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -928,25 +917,6 @@
                 <ScalarProperty Name="StateID" ColumnName="StateID" />
                 <ScalarProperty Name="StateName" ColumnName="StateName" />
                 <ScalarProperty Name="StateAbbr" ColumnName="StateAbbr" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BalloonTypes">
-            <EntityTypeMapping TypeName="BalloonsModel.BalloonType">
-              <MappingFragment StoreEntitySet="BalloonType">
-                <ScalarProperty Name="IsLatex" ColumnName="IsLatex" />
-                <ScalarProperty Name="IsMylar" ColumnName="IsMylar" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Accessories">
-            <EntityTypeMapping TypeName="BalloonsModel.Accessory">
-              <MappingFragment StoreEntitySet="Accessories">
-                <ScalarProperty Name="AccessImg" ColumnName="AccessImg" />
-                <ScalarProperty Name="AccessDesc" ColumnName="AccessDesc" />
-                <ScalarProperty Name="AccessName" ColumnName="AccessName" />
-                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
