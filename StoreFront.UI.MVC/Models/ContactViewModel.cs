@@ -12,11 +12,15 @@ namespace StoreFront.UI.MVC.Models
         [Required(ErrorMessage = "* Please enter a Name")]
         public string Name { get; set; }
 
+
+        
         [Required(ErrorMessage = "* Please enter an Email Address")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+
         public string Subject { get; set; }
+
 
         [Required(ErrorMessage = "* Please enter a Message")]
         [UIHint("Multilinetext")]

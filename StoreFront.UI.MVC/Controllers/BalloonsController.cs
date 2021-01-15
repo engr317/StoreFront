@@ -20,7 +20,7 @@ namespace StoreFront.UI.MVC.Controllers
         // GET: Balloons
         public ActionResult Index()
         {
-            var balloons = db.Balloons.Include(b => b.Accessory).Include(b => b.BalloonStatu).Include(b => b.Distributor).Include(b => b.Seasonal).Include(b => b.Manufacturer).Include(b => b.BalloonType);
+            var balloons = db.Balloons.Include(b => b.Accessory).Include(b => b.BalloonStatus).Include(b => b.Distributor).Include(b => b.Seasonal).Include(b => b.Manufacturer).Include(b => b.BalloonType);
             return View(balloons.ToList());
         }
 

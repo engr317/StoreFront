@@ -27,7 +27,7 @@ namespace StoreFront.DATA.EF
     
         public virtual DbSet<Accessory> Accessories { get; set; }
         public virtual DbSet<Balloon> Balloons { get; set; }
-        public virtual DbSet<BalloonStatu> BalloonStatus { get; set; }
+        public virtual DbSet<BalloonStatus> BalloonStatus { get; set; }
         public virtual DbSet<BalloonType> BalloonTypes { get; set; }
         public virtual DbSet<Billing_Information> Billing_Information { get; set; }
         public virtual DbSet<Department> Departments { get; set; }

@@ -7,7 +7,7 @@
       <Diagram DiagramId="95b4be2ccc484f4088d485f05c4dda05" Name="Diagram1">
         <EntityTypeShape EntityType="BalloonsModel.Accessory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Balloon" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BalloonsModel.BalloonStatu" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalloonsModel.BalloonStatus" Width="1.5" PointX="7.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.BalloonType" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Billing_Information" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BalloonsModel.Department" Width="1.5" PointX="5.75" PointY="3" IsExpanded="true" />

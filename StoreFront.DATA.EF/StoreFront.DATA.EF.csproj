@@ -56,7 +56,7 @@
     <Compile Include="Balloon.cs">
       <DependentUpon>StoreFrontMetaData.tt</DependentUpon>
     </Compile>
-    <Compile Include="BalloonStatu.cs">
+    <Compile Include="BalloonStatus.cs">
       <DependentUpon>StoreFrontMetaData.tt</DependentUpon>
     </Compile>
     <Compile Include="BalloonType.cs">

@@ -8,21 +8,22 @@
 
 img {
     width: auto;
-    
 }
 
-#header .logo
-{
+#header .logo {
     background-image: url(assets/images/Balloons/balloonbanner.jpg);
-    border-bottom:3px solid black;
-
+    border-bottom: 3px solid black;
+    height: 13em;
 }
+
     #header .logo a {
-        color: black;
+        color: red;
+        text-align: justify;
+        vertical-align: bottom;
     }
 
-#sidebar .toggle{
-    color:black;
+#sidebar .toggle {
+    color: black;
 }
 
 /* Accessories Details */

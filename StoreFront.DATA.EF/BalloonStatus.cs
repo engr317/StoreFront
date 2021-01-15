@@ -12,10 +12,10 @@ namespace StoreFront.DATA.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class BalloonStatu
+    public partial class BalloonStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BalloonStatu()
+        public BalloonStatus()
         {
             this.Balloons = new HashSet<Balloon>();
         }

@@ -39,7 +39,7 @@ namespace StoreFront.DATA.EF
         public Nullable<int> AccessID { get; set; }
     
         public virtual Accessory Accessory { get; set; }
-        public virtual BalloonStatu BalloonStatu { get; set; }
+        public virtual BalloonStatus BalloonStatus { get; set; }
         public virtual Distributor Distributor { get; set; }
         public virtual Seasonal Seasonal { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }

@@ -401,14 +401,14 @@
           <Property Name="ManufactID" Type="Int32" Nullable="false" />
           <Property Name="AccessID" Type="Int32" />
           <NavigationProperty Name="Accessory" Relationship="Self.FK_Balloons_Accessories" FromRole="Balloons" ToRole="Accessories" />
-          <NavigationProperty Name="BalloonStatu" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="Balloons" ToRole="BalloonStatus" />
+          <NavigationProperty Name="BalloonStatus" Relationship="Self.FK_Balloons_BalloonStatus" FromRole="Balloons" ToRole="BalloonStatus" />
           <NavigationProperty Name="Distributor" Relationship="Self.FK_Balloons_Distributors1" FromRole="Balloons" ToRole="Distributors" />
           <NavigationProperty Name="Seasonal" Relationship="Self.FK_Balloons_Genres" FromRole="Balloons" ToRole="Seasonal" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Balloons_Manufacturers" FromRole="Balloons" ToRole="Manufacturers" />
           <NavigationProperty Name="BalloonType" Relationship="Self.FK_Balloons_Type" FromRole="Balloons" ToRole="BalloonType" />
           <NavigationProperty Name="Shippers" Relationship="Self.FK_Shipping_Balloons" FromRole="Balloons" ToRole="Shippers" />
         </EntityType>
-        <EntityType Name="BalloonStatu">
+        <EntityType Name="BalloonStatus">
           <Key>
             <PropertyRef Name="BalloonStatusID" />
           </Key>
@@ -556,7 +556,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Balloons_BalloonStatus">
-          <End Role="BalloonStatus" Type="Self.BalloonStatu" Multiplicity="1" />
+          <End Role="BalloonStatus" Type="BalloonsModel.BalloonStatus" Multiplicity="1" />
           <End Role="Balloons" Type="Self.Balloon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BalloonStatus">
@@ -690,7 +690,7 @@
         <EntityContainer Name="BalloonsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accessories" EntityType="Self.Accessory" />
           <EntitySet Name="Balloons" EntityType="Self.Balloon" />
-          <EntitySet Name="BalloonStatus" EntityType="Self.BalloonStatu" />
+          <EntitySet Name="BalloonStatus1" EntityType="BalloonsModel.BalloonStatus" />
           <EntitySet Name="BalloonTypes" EntityType="Self.BalloonType" />
           <EntitySet Name="Billing_Information" EntityType="Self.Billing_Information" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -706,7 +706,7 @@
             <End Role="Balloons" EntitySet="Balloons" />
           </AssociationSet>
           <AssociationSet Name="FK_Balloons_BalloonStatus" Association="Self.FK_Balloons_BalloonStatus">
-            <End Role="BalloonStatus" EntitySet="BalloonStatus" />
+            <End Role="BalloonStatus" EntitySet="BalloonStatus1" />
             <End Role="Balloons" EntitySet="Balloons" />
           </AssociationSet>
           <AssociationSet Name="FK_Balloons_Distributors1" Association="Self.FK_Balloons_Distributors1">
@@ -790,8 +790,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BalloonStatus">
-            <EntityTypeMapping TypeName="BalloonsModel.BalloonStatu">
+          <EntitySetMapping Name="BalloonStatus1">
+            <EntityTypeMapping TypeName="BalloonsModel.BalloonStatus">
               <MappingFragment StoreEntitySet="BalloonStatus">
                 <ScalarProperty Name="BalloonStatusID" ColumnName="BalloonStatusID" />
                 <ScalarProperty Name="BalloonStatusName" ColumnName="BalloonStatusName" />
