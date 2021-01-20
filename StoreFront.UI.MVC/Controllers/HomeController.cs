@@ -59,7 +59,7 @@ namespace StoreFront.UI.MVC.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.ErrorMessage = "We're sorry, you suck!";
+                    ViewBag.ErrorMessage = $"Sorry, Something went wrong.  Error message: {ex.Message}<br/>{ex.StackTrace}";
                     return View(cvm);
                 }
 

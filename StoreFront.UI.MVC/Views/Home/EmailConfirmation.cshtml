@@ -1,0 +1,23 @@
+﻿@model StoreFront.UI.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "- Email Confirmation -";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
+<br />
+<h3>Thank you @Model.Name!</h3>
+<p>We have recieved your email, and will respond as soon as we can!</p>
+
+<p>Below are your message details:</p>
+<p>
+    Name: @Model.Name
+    <br />
+    Email: @Model.Email
+    <br />
+    Subject: @Model.Subject
+    <br />
+    Message: @Model.Message
+</p>
